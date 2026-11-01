@@ -1,0 +1,22 @@
+{
+  "name": "p5-campus-mcp",
+  "version": "1.0.0",
+  "description": "校园公告板 MCP Server：让任何 agent 直接查/发/删公告（数据源：WHMESSI-25 的校园公告板）",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "p5-campus-mcp": "index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node index.js",
+    "test": "node smoke-test.mjs"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "zod": "^4.6.7"
+  }
+}
