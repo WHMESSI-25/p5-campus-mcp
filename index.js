@@ -37,8 +37,11 @@ async function fetchLive() {
 }
 
 // 按日期从新到旧排序
+// 同日期时返回 0 保持数据文件的原始顺序（新发的公告在文件里本来就排在前面）。
+// 旧版写法 (a.date < b.date ? 1 : -1) 在日期相等时两个方向都返回 -1，
+// 是个自相矛盾的比较器，导致刚发布的公告可能被排到后面（同学试用反馈的真实 bug）。
 function sortDesc(list) {
-  return [...list].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return [...list].sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 }
 
 // 把公告列表整理成给 agent 看的文本
